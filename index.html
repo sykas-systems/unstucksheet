@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unstuck Sheet - Decision Making Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Step 1 of 5</div>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div class="step-container active" id="welcome">
+            <div class="step-content">
+                <h1 class="welcome-title">The Unstuck Sheet</h1>
+                <p class="welcome-subtitle">Make a good-enough decision — without overthinking it</p>
+                <div class="instruction-box">
+                    <p class="instruction-text">Don't try to get it perfect. This tool isn't about being right — it's about getting unstuck. You'll finish it in 5 minutes or less. Just follow the steps. No second-guessing. No pressure.</p>
+                </div>
+                <button class="btn btn--primary btn--lg" id="startBtn">Start Making Your Decision</button>
+            </div>
+        </div>
+
+        <!-- Step 1: Options Input -->
+        <div class="step-container" id="step1">
+            <div class="step-content">
+                <h2>Step 1: List Your Options</h2>
+                <p class="step-instruction">List 2-3 options you are deciding between. Keep it simple - just the basics</p>
+                <div class="options-container" id="optionsContainer">
+                    <div class="form-group">
+                        <input type="text" class="form-control option-input" placeholder="Option 1" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control option-input" placeholder="Option 2" maxlength="50">
+                    </div>
+                </div>
+                <button class="btn btn--outline btn--sm" id="addOptionBtn">+ Add another option</button>
+                <div class="step-actions">
+                    <button class="btn btn--primary" id="step1Next">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Priority Selection -->
+        <div class="step-container" id="step2">
+            <div class="step-content">
+                <h2>Step 2: What Matters Most Right Now?</h2>
+                <p class="step-instruction">Select up to 3 priorities that matter most to you</p>
+                <div class="priorities-grid" id="prioritiesGrid">
+                    <!-- Priorities will be populated by JavaScript -->
+                </div>
+                <div class="priority-counter">
+                    <span id="priorityCount">0</span> of 3 priorities selected
+                </div>
+                
+                <div class="step-actions">
+                    <button class="btn btn--secondary" id="step2Back">Back</button>
+                    <button class="btn btn--primary" id="step2Next" disabled>Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Quick Scoring -->
+        <div class="step-container" id="step3">
+            <div class="step-content">
+                <h2>Step 3: Quick Score</h2>
+                <p class="step-instruction">Rate each option for your selected priorities</p>
+                <div class="scoring-table" id="scoringTable">
+                    <!-- Scoring table will be populated by JavaScript -->
+                </div>
+                <div class="step-actions">
+                    <button class="btn btn--secondary" id="step3Back">Back</button>
+                    <button class="btn btn--primary" id="step3Next" disabled>See Results</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Results & Gut Check -->
+        <div class="step-container" id="step4">
+            <div class="step-content">
+                <h2>Step 4: Gut Check</h2>
+                <p class="step-instruction">Here are your scores. Sometimes your intuition knows best</p>
+                <div class="results-container" id="resultsContainer">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+                <div class="gut-check">
+                    <label class="form-group">
+                        <input type="checkbox" id="gutCheckOverride">
+                        <span>Ignore the scores if your gut feels differently</span>
+                    </label>
+                </div>
+                <div class="step-actions">
+                    <button class="btn btn--secondary" id="step4Back">Back</button>
+                    <button class="btn btn--primary" id="step4Next">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Next Action -->
+        <div class="step-container" id="step5">
+            <div class="step-content">
+                <h2>Step 5: Take One Small Step</h2>
+                <p class="step-instruction">One tiny step is all you need</p>
+                <div class="chosen-option" id="chosenOption">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                <div class="form-group">
+                    <label class="form-label">One thing I'll do in the next 24 hours:</label>
+                    <textarea class="form-control" id="nextActionInput" placeholder="One thing I'll do in the next 24 hours..." rows="3" maxlength="200"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category (Optional)</label>
+                    <select class="form-control" id="categorySelect">
+                        <option value="">Select a category</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Health">Health</option>
+                        <option value="Financial">Financial</option>
+                        <option value="Relationship">Relationship</option>
+                        <option value="Creative">Creative</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="step-actions">
+                    <button class="btn btn--secondary" id="step5Back">Back</button>
+                    <button class="btn btn--primary" id="step5Next" disabled>Complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completion -->
+        <div class="step-container" id="completion">
+            <div class="step-content">
+                <div class="completion-content">
+                    <h2>Great! You've made a decision.</h2>
+                    <p class="completion-message">Your next step is clear. You can always come back and use this tool again when you need to make another decision.</p>
+                    <div class="completion-summary" id="completionSummary">
+                        <!-- Summary will be populated by JavaScript -->
+                    </div>
+                    <div class="step-actions">
+                        <button class="btn btn--primary" id="startOverBtn">Start Over</button>
+                        <button class="btn btn--secondary" id="closeBtn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tooltips -->
+        <div class="tooltip" id="tooltip">
+            <div class="tooltip-content"></div>
+        </div>
+
+        <!-- Encouraging Messages -->
+        <div class="encouraging-message" id="encouragingMessage"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
